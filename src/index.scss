@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;600;700&display=swap");
+@layer base {
+  html,
+  body {
+    font-family: "League Spartan", sans-serif;
+    min-height: 100vh;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// App styles
+.App {
+  display: grid;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  grid-template-areas:
+    "Header"
+    "footer";
+  &_Header {
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 3rem;
+  }
+  &_Footer {
+    height: 100%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+  }
+  @media screen and (min-width: 1024px) {
+    &_Header,
+    &_Footer {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
+
+@layer components {
+  //Nav bar styles
+  .Navbar {
+    @apply grid absolute  items-center z-50 max-h-28  p-4 w-full;
+    grid-area: Header;
+    & > * {
+      grid-row: 1/-1;
+      grid-column: 1/-1;
+    }
+    &_img1 {
+      @apply lg:hidden md:w-14;
+      & > img {
+        @apply md:w-full object-cover;
+      }
+    }
+    &_img2 {
+      @apply lg:place-self-start place-self-center md:w-32;
+      & > img {
+        @apply md:w-full object-cover;
+      }
+    }
+    &_backdrop {
+      @apply bg-black/60 lg:hidden  z-20 fixed top-0 left-0 right-0 bottom-0;
+    }
+    &_dropdown {
+      @apply bg-white fixed lg:hidden flex items-center justify-between px-8 backdrop:bg-black/50  right-0 left-0 z-50 top-0 h-36;
+      ul {
+        @apply flex space-x-6 font-bold;
+      }
+    }
+  }
+  //HeroImg styles
+  .HeroImg {
+    @apply bg-no-repeat relative w-full h-96 lg:h-full xl:max-w-[1660px];
+    background-size: 100% 100%;
+    grid-area: Header;
+  }
+  // Contoller styles
+  .Controller {
+    @apply flex absolute right-0  lg:-bottom-16 lg:-right-48 xl:-bottom-0 lg:w-48 m-auto bottom-0 items-center place-self-end justify-between  w-28 h-16;
+    div {
+      @apply bg-black transition-all ease-in-out duration-75 w-full h-full flex place-items-center justify-center;
+      &:hover {
+        @apply bg-gray-500/90;
+      }
+    }
+    & > * > img {
+      height: 20px;
+    }
+    grid-area: Header;
+  }
+  // HeroHeading styles
+  .HeroHeading {
+    @apply px-8 mt-20   mb-16 md:mb-0  h-80 md:max-w-md lg:max-w-xl md:px-0 lg:mt-0 md:place-self-center md:text-center lg:text-left  lg:w-[60%]  lg:px-16;
+    &_title {
+      @apply text-3xl font-bold mb-6;
+    }
+    &_content {
+      @apply text-gray-400 text-[0.95rem] mb-12 lg:mb-4;
+    }
+    &_link {
+      @apply flex w-full cursor-pointer hover:text-gray-500 items-center md:justify-center tracking-link space-x-6 font-semibold;
+    }
+    grid-area: HeroHeader;
+  }
+  // SideImg1 styles
+  .SideImg1 {
+    @apply bg-sideImg1  bg-no-repeat w-full h-72;
+    background-size: 100% 100%;
+    grid-area: SideImg1;
+  }
+
+  // About styles
+  .About {
+    @apply px-8 pt-8 md:max-w-md lg:max-w-7xl lg:text-left place-self-center md:text-center;
+    &_title {
+      @apply text-xl font-bold mb-6 uppercase tracking-title;
+    }
+    &_content {
+      @apply text-gray-400 text-[0.95rem] mb-12;
+    }
+  }
+
+  //SideImg2 styles
+  .SideImg2 {
+    @apply bg-sideImg2   bg-no-repeat w-full h-72;
+    background-size: 100% 100%;
+    grid-area: SideImg2;
+  }
+}
