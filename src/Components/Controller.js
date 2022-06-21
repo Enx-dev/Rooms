@@ -5,7 +5,6 @@ import data from "../data/data.json";
 import { textState } from "../App/atom";
 import { useRecoilState } from "recoil";
 const Controller = () => {
-  console.table(data);
   const [text, setText] = useRecoilState(textState);
   const [i, setI] = useState(1);
   const control = useRef();
