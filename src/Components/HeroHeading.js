@@ -5,7 +5,6 @@ import { textState } from "../App/atom";
 
 const HeroHeading = () => {
   const [text, setText] = useRecoilState(textState);
-  console.log(text);
   return (
     <section className='HeroHeading'>
       <h1 className='HeroHeading_title'>{text.text.title}</h1>

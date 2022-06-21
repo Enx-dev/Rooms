@@ -11,7 +11,6 @@ const Controller = () => {
   const control = useRef();
   const moveRight = useCallback(
     (e) => {
-      console.log(e);
       if (i < 3) {
         setText(data[i]);
         setI(i + 1);
